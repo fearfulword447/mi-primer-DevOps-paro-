@@ -1,10 +1,17 @@
 // Código intencionalmente vulnerable para la Actividad 2
-function mostrarMensajeDelUsuario(inputDelUsuario) {
+// Flujo completo: Origen no confiable -> Destino peligroso
+
+function mostrarMensajeDelUsuario() {
+    // 1. ORIGEN (Source): Tomamos datos directamente de la URL (parámetro 'nombre')
+    const parametrosUrl = new URLSearchParams(window.location.search);
+    const inputDelUsuario = parametrosUrl.get('nombre');
+    
     const contenedor = document.getElementById('mensaje');
     
-    // PELIGRO: Usar innerHTML directamente con datos que vienen del usuario
-    // Esto permite ataques de Cross-Site Scripting (XSS)
+    // 2. DESTINO (Sink): Inyectamos el dato sin limpiarlo
+    // Esto es un DOM XSS de libro. ¡CodeQL no podrá ignorarlo!
     contenedor.innerHTML = "Hola, " + inputDelUsuario;
 }
 
-//forzando clip
+// Ejecutamos la función
+mostrarMensajeDelUsuario();
