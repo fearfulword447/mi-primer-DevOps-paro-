@@ -6,3 +6,5 @@ function mostrarMensajeDelUsuario(inputDelUsuario) {
     // Esto permite ataques de Cross-Site Scripting (XSS)
     contenedor.innerHTML = "Hola, " + inputDelUsuario;
 }
+
+//forzando clip
