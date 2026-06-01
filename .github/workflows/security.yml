@@ -1,0 +1,31 @@
+name: Security — Análisis de seguridad
+
+on:
+  push:
+    branches: [ 'main', 'develop' ]
+  pull_request:
+    branches: [ 'main' ]
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+  codeql:
+    name: SAST — CodeQL
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Inicializar CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: javascript-typescript
+          queries: security-extended
+      - name: Auto-build (inferir compilación)
+        uses: github/codeql-action/autobuild@v3
+      - name: Ejecutar análisis CodeQL
+        uses: github/codeql-action/analyze@v3
+        with:
+          category: '/language:javascript-typescript'
