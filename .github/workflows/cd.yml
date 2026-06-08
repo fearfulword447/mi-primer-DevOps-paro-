@@ -4,6 +4,10 @@ on:
   push:
     branches: [ 'main' ]
 
+permissions:
+  contents: read
+  security-events: write
+
 jobs:
   trivy-scan:
     name: Container Scan — Trivy
@@ -15,7 +19,8 @@ jobs:
         run: docker build -t app-demo:${{ github.sha }} .
         
       - name: Escanear con Trivy
-        uses: aquasecurity/trivy-action@0.24.0
+        # SOLUCIÓN: Cambiamos 0.24.0 por master para que encuentre la herramienta
+        uses: aquasecurity/trivy-action@master
         with:
           image-ref: 'app-demo:${{ github.sha }}'
           format: 'sarif'
