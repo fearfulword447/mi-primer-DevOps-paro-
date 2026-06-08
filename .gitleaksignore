@@ -1,0 +1,5 @@
+[allowlist]
+description = "Ignorar clave falsa de prueba para la Actividad 4"
+regexes = [
+    "ghp_1234567890abcdefghijklmnopqrstuvwxyzABCD"
+]
