@@ -8,8 +8,8 @@
     "test": "echo 'Pruebas 100% pasadas' && exit 0",
     "build": "mkdir -p dist && echo 'App compilada' > dist/index.js"
   },
-  "dependencies": {
-    "lodash": "4.17.4"
+ "dependencies": {
+    "lodash": "4.17.21"
   },
   "devDependencies": {}
 }
