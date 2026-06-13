@@ -8,7 +8,7 @@ on:
 env:
   REGISTRY: ghcr.io
   # AQUI ESTA LA MAGIA: Forzamos el nombre todo en minúsculas a mano
-  IMAGE_NAME: fearfulword447/mi-primer-devops-paro-
+  IMAGE_NAME: fearfulword447/mi-primer-devops-paro
 
 permissions:
   contents: read
